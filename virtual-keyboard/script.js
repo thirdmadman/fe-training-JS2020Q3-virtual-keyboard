@@ -20,7 +20,7 @@ class Keyboard {
         this.layoutLanguage = 'ru';
         this.isKeyboardHidden = true;
         this._createKeyboard();
-        setInterval(() => this.textInput.focus(), 1000);
+        this._updateFocus();
     }
 
     _createKeyboard() {
@@ -48,6 +48,14 @@ class Keyboard {
                 });
             });
         });
+    }
+
+    _updateFocus() {
+        setInterval(() => {
+            if (!this.isKeyboardHidden) {
+                this.textInput.focus();
+            }
+        }, 1000);
     }
 
     _createKeys() {
